@@ -8,7 +8,7 @@ dateAdd(prop("Recurring date"), ceil(dateBetween({remove_time('now()')}, {remove
     result = f'''
 if(or(or(empty(prop("Recurring date")),empty(prop("Recurring"))), empty(prop("Recurring every"))),
 if(empty(prop("Do on")), prop("Due"), prop("Do on")),
-if(prop("Recurring") == "Weekly", {weekly_rule}, prop("Do on"))
+if(and(prop("Recurring") == "Weekly", timestamp(prop("Recurring date")) <= timestamp(now())), {weekly_rule}, prop("Do on"))
 )
 '''
 
