@@ -1,9 +1,9 @@
 if __name__ == '__main__':
     remove_time = lambda val: f'dateSubtract(dateSubtract({val}, hour({val}), "hours"), minute({val}), "minutes")'
 
-    start_date = f'''if(empty(prop("Do on")), {remove_time('prop("Due")')} , {remove_time('prop("Do on")')})'''
+    start_date = remove_time('prop("Calendar date")')
 
-    end_date = f'''if(empty(prop("Do on")), {remove_time('end(prop("Due"))')} , {remove_time('end(prop("Do on"))')})'''
+    end_date = remove_time('end(prop("Calendar date"))')
 
     now = remove_time('now()')
 
